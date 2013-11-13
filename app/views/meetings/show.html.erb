@@ -1,0 +1,17 @@
+<h1>Meeting #<%= @meeting.id %></h1>
+
+<dl>
+  <dt>Held on</dt>
+  <dd><%= @meeting.held_on %></dd>
+
+  <dt>Course</dt>
+  <dd><%= @meeting.course_id %></dd>
+
+
+<dt>Students that attended</dt>
+    <% @attendances = Attendance.where(:meeting_id => @meeting.id) %>
+    <% @attendances.each do |attend| %>
+    <% @student = @students.find(attend.student_id) %>
+    <dd><%= @student.first_name %><%= @student.last_name %></dd>
+    <% end %>
+</dl>
